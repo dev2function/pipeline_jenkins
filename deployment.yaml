@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: leader		
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: leader
+    spec:
+      containers:
+      - name: leader
+        image: docker.io/leaderhub/app-test
+        ports:
+        - containerPort: 3000
+        
