@@ -1,0 +1,39 @@
+pipeline {
+  agent any
+  stages {
+    stage('Pull') {
+      steps {
+        git(url: 'https://github.com/dev2function/node-pipeline.git', branch: 'test')
+      }
+    }
+
+    stage('Build image') {
+      steps {
+        sh 'docker build -t leaderhub/app-test .'
+      }
+    }
+
+        stage('Run continaer') {
+          steps {
+            sh 'docker system prune -a'
+            sh 'docker run --rm -d -p 3000:4000 leaderhub/app-test'
+            echo 'success'
+          }
+        }
+
+    stage('Push image') {
+      agent any
+      steps {
+        sh 'docker login --username devops2leader --password Eiuy76008Riuy76009'
+        sh 'docker push leaderhub/app-test:latest'
+      }
+    }
+
+    stage('Message') {
+      steps {
+        echo 'success, push image to registry'
+      }
+    }
+
+  }
+}
