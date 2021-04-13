@@ -22,8 +22,8 @@ pipeline {
 
     stage('Push image') {
       steps {
-        sh 'docker push leaderhub/app-test'
         sh 'docker login --username=devops2leader --password Eiuy76008Riuy76009'
+        sh 'docker push leaderhub/app-test:latest'
       }
     }
 
