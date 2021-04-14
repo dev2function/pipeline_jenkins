@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Pull') {
       steps {
-        git(url: 'https://github.com/dev2function/pipeline_kubernetes.git', branch: 'master')
+        git(url: 'https://github.com/dev2function/pipeline_jenkins.git', branch: 'master')
       }
     }
 
