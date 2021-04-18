@@ -4,7 +4,7 @@ node {
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
       
-        git([url: 'https://github.com/dev2function/pipeline_kubernetes.git', branch: 'master'])
+        git([url: 'https://github.com/dev2function/pipeline_jenkins.git', branch: 'master'])
       
       checkout scm
     }
